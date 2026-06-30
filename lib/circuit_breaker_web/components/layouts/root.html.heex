@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Circuit Breaker Dashboard</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/phoenix@1.7.14/priv/static/phoenix.min.js">
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/phoenix_live_view@0.20.17/priv/static/phoenix_live_view.min.js">
+    </script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        let csrfToken = document.querySelector("meta[name='csrf-token']")?.getAttribute("content") || "";
+        let liveSocket = new window.LiveView.LiveSocket("/live", window.Phoenix.Socket, {
+          params: { _csrf_token: csrfToken }
+        });
+        liveSocket.connect();
+      });
+    </script>
+    <style>
+      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #0f1115; color: #e6e6e6; margin: 0; padding: 2rem; }
+      h1 { font-weight: 600; }
+      table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+      th, td { text-align: left; padding: 0.6rem 1rem; border-bottom: 1px solid #2a2d35; }
+      th { color: #8b8f99; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+      .badge { padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
+      .closed { background: #15351f; color: #4ade80; }
+      .open { background: #3a1717; color: #f87171; }
+      .half_open { background: #3a2f15; color: #fbbf24; }
+      .log-entry { padding: 0.5rem 0; border-bottom: 1px solid #2a2d35; font-size: 0.9rem; color: #b0b3bb; }
+    </style>
+  </head>
+  <body>
+    {@inner_content}
+  </body>
+</html>
