@@ -9,7 +9,8 @@ defmodule CircuitBreaker.Application do
   def start(_type, _args) do
     children = [
       CircuitBreaker.Registry,
-      CircuitBreaker.Supervisor
+      CircuitBreaker.Supervisor,
+      CircuitBreaker.Metrics
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
