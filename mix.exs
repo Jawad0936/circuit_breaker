@@ -24,6 +24,8 @@ defmodule CircuitBreaker.MixProject do
       {:telemetry_metrics, "~> 1.0"},
       {:phoenix, "~> 1.7"},
       {:phoenix_live_view, "~> 0.20"},
+      {:phoenix_html, "~> 4.0"},
+      {:plug_cowboy, "~> 2.7"},
       {:jason, "~> 1.2"},
       {:stream_data, "~> 0.6", only: :test}
     ]
